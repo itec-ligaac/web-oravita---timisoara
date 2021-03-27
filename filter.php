@@ -48,13 +48,13 @@
 	<div class="row text-center">
 <?php
  print '
-        <form role="form" action="request.php?selectedCity='.$_GET["selectedCity"].'" method="post">
+        <form role="form" action="request.php?selectedCity='.$_GET['selectedCity'].'" method="post">
           <div class="form-group">
 
             <label for="exampleInputEmail1">
               Full name
             </label>
-            <input type="email" class="form-control" id="exampleInputEmail1">
+            <input type="text" class="form-control" id="exampleInputEmail1">
           </div>
 
             <label for="exampleInputDate1">

@@ -120,7 +120,7 @@
                 <p class="card-text">'. 'Temperature: ' .$temp.'°C </p>
               </div>
               <div class="card-footer">
-                <a href="filter.php?post_id='.$destinations[$i]['dest_id'].'" class="btn btn-primary">Find Out More!</a>
+                <a href="filter.php?selectedCity='.$destinations[$i]['city'].'" class="btn btn-primary">Find Out More!</a>
               </div>
               </div>
             </div>
