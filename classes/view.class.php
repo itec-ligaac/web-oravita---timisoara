@@ -2,9 +2,9 @@
 
 class View extends Model{
 
-    protected function showDestinations(){
-        $results=$this->getDestinations();
-        
+    public function getDestinations(){
+        $results=$this->getDest();
+        return $results;
     }
 
 }

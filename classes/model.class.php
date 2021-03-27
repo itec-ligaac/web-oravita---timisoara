@@ -2,7 +2,7 @@
 
 class Model extends Dbh{
 
-    protected function getDestinations(){
+    protected function getDest(){
         $sql="SELECT * FROM destinations";
         $stmt=$this->connect()->query($sql);
         $results=$stmt->fetchAll();

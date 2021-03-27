@@ -1,3 +1,7 @@
+<?php
+	include 'C:\xampp\htdocs\web-oravita---timisoara\includes\autoloader.inc.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,62 +63,34 @@
     </header>
 
     <!-- Page Features -->
-    <div class="row text-center">
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://www.mymallorcatrips.com/wp-content/uploads/2019/08/sephar8-500x325.jpg" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Destinatie</h4>
-            <p class="card-text">Descriere destinatie</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
+	<?php
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://djdo2py1q6zlg.cloudfront.net/magazine/wp-content/uploads/2018/12/overwater-spa-500x325.jpg" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Destinatie</h4>
-            <p class="card-text">Descriere destinatie</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
+	$view=new View();
+	$destinations=$view->getDestinations();
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://www.xanadumainbeach.com.au/wp-content/uploads/2020/02/xanadu-gold-coast-accommodation-sunset-ocean-shoreline-500x325.jpg" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Destinatie</h4>
-            <p class="card-text">Descriere destinatie</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
+	for($i=0;$i<count($destinations);$i=$i+1){
+		print '<div class="row text-center">
 
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-          <img class="card-img-top" src="https://www.xanadumainbeach.com.au/wp-content/uploads/2020/02/xanadu-gold-coast-accommodation-main-beach-entry-500x325.jpg" alt="">
-          <div class="card-body">
-            <h4 class="card-title">Destinatie</h4>
-            <p class="card-text">Descriere destinatie</p>
-          </div>
-          <div class="card-footer">
-            <a href="#" class="btn btn-primary">Find Out More!</a>
-          </div>
-        </div>
-      </div>
+		<div class="col-lg-3 col-md-6 mb-4">
+		  <div class="card h-100">
+			<img class="card-img-top" src="https://www.mymallorcatrips.com/wp-content/uploads/2019/08/sephar8-500x325.jpg" alt="">
+			<div class="card-body">
+			  <h4 class="card-title">'.$destinations[$i]['city'].', '.$destinations[$i]['country'].'</h4>
+			  <p class="card-text">Descriere destinatie</p>
+			</div>
+			<div class="card-footer">
+			  <a href="#" class="btn btn-primary">Find Out More!</a>
+			</div>
+		  </div>
+		</div>
+  
+	  </div>';
+	}
+	?>
 
-    </div>
     <!-- /.row -->
+	
 
   </div>
   <!-- /.container -->
