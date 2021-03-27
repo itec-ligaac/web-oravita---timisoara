@@ -1,5 +1,5 @@
 <?php
-	include 'includes\autoloader.inc.php';
+	include 'includes/autoloader.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -67,7 +67,13 @@
 	<div class="row text-center">
 
         <form action="request.php" method="post" class="form-control">
-            <input type="text" name="name"  placeholder="Complete name"></input>
+            <input type="text" name="name"  placeholder="Please enter your name"></input>
+						From:
+    				<input type="date" name="dateFrom" value="<?php echo date('Y-m-d'); ?>" />
+    				<br/>
+    				To:
+    				<input type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
+						<input type="submit" name="submit" value="Submit"/>
         </form>
 
 	<?php
@@ -75,7 +81,7 @@
 	?>
 	</div>
     <!-- /.row -->
-	
+
 
   </div>
   <!-- /.container -->
