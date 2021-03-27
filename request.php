@@ -15,11 +15,17 @@ if(isset($_POST['submit']))
     exit();
   }
 
+  header("Location: ../filter.php?error=Success");
+  exit();
 
 }
 else{
-  header("Location: ../filter.php?error=invalidSubmit");
-  exit();
+  //header("Location: ../filter.php?error=invalidSubmit");
+  echo '
+  https://data.xotelo.com/api/rates?hotel_key=g297930-d305178&chk_in=2021-03-27&chk_out=2021-03-29
+  ';
+  //exit();
+
 }
 function test_input($data) {
   $data = trim($data);
