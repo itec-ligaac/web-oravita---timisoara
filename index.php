@@ -67,6 +67,9 @@
 	<div class="row text-center">
 
 	<?php
+	$hot=new HotelParser();
+	$hotels=$hot->getHotels('Bucharest');
+
 
 	$view=new View();
 	$destinations=$view->getDestinations();
