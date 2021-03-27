@@ -57,28 +57,42 @@
 
     <!-- Jumbotron Header -->
     <header class="jumbotron my-4">
-      <h1 class="display-3">Hello there!</h1>
-      <p class="lead">Feel free to browse the available destinations below or search for something specific.</p>
-      <a href="#" class="btn btn-primary btn-lg">Button that does nothing yet</a>
+      <h1 class="display-3">Nice pick!</h1>
+      <p class="lead">Next, type in your name and vacantion timeline. We'll make sure you get the best offers.</p>
     </header>
 
     <!-- Page Features -->
 
 	<div class="row text-center">
 
-        <form action="request.php" method="post" class="form-control">
-            <input type="text" name="name"  placeholder="Please enter your name"></input>
-						From:
-    				<input type="date" name="dateFrom" value="<?php echo date('Y-m-d'); ?>" />
-    				<br/>
-    				To:
-    				<input type="date" name="dateTo" value="<?php echo date('Y-m-d'); ?>" />
-						<input type="submit" name="submit" value="Submit"/>
+        <form role="form" action="request.php" method="post">
+          <div class="form-group">
+            
+            <label for="exampleInputEmail1">
+              Full name
+            </label>
+            <input type="email" class="form-control" id="exampleInputEmail1">
+          </div>
+            
+            <label for="exampleInputDate1">
+              Check-In Date
+            </label>
+          <div class="form-group">
+            <input type="date" name="dateFrom" class="form-control" value="<?php echo date('Y-m-d');?>">
+          </div>
+
+            <label for="exampleInputDate1">
+              Check-Out Date
+            </label>
+          <div class="form-group">
+            <input type="date" name="dateFrom" class="form-control" value="<?php echo date('Y-m-d');?>">
+          </div>
+         
+          <button type="submit" class="btn btn-primary" style="margin-bottom: 20px">
+            Submit
+          </button>
         </form>
-
-	<?php
-
-	?>
+      
 	</div>
     <!-- /.row -->
 

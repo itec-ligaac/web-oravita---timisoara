@@ -77,10 +77,15 @@
 	$vac=new Vaccinations();
 	$vaccines=$vac->getVaccinations();
 
+  $tempObj=new Temperature();
+ 
+
 	$percentageObject = new Percentage();
 
 	for($i=0;$i<count($destinations);$i=$i+1){
 			$rate = $percentageObject->getRate($vaccines, $destinations[$i]['country']);
+      $temp=$tempObj->getTemperature($destinations[$i]['city']);
+
 		print '
 		<div class="col-lg-3 col-md-6 mb-4">
 		  <div class="card h-100">
@@ -88,6 +93,7 @@
 			<div class="card-body">
 			  <h4 class="card-title">'.$destinations[$i]['city'].', '.$destinations[$i]['country'].'</h4>
 			  <p class="card-text">'. 'Vaccination rate is ' .$rate.'% </p>
+        <p class="card-text">'. 'Temperature: ' .$temp.'°C </p>
 			</div>
 			<div class="card-footer">
         <a href="filter.php?post_id='.$destinations[$i]['dest_id'].'" class="btn btn-primary">Find Out More!</a>
