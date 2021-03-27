@@ -64,14 +64,15 @@
 
     <!-- Page Features -->
 
+	<div class="row text-center">
+
 	<?php
 
 	$view=new View();
 	$destinations=$view->getDestinations();
 
 	for($i=0;$i<count($destinations);$i=$i+1){
-		print '<div class="row text-center">
-
+		print '
 		<div class="col-lg-3 col-md-6 mb-4">
 		  <div class="card h-100">
 			<img class="card-img-top" src="https://www.mymallorcatrips.com/wp-content/uploads/2019/08/sephar8-500x325.jpg" alt="">
@@ -85,10 +86,10 @@
 		  </div>
 		</div>
   
-	  </div>';
+	  ';
 	}
 	?>
-
+	</div>
     <!-- /.row -->
 	
 
