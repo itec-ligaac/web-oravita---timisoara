@@ -71,6 +71,9 @@
 	$view=new View();
 	$destinations=$view->getDestinations();
 
+	$vac=new Vaccinations();
+	$vaccines=$vac->getVaccinations();
+
 	for($i=0;$i<count($destinations);$i=$i+1){
 		print '
 		<div class="col-lg-3 col-md-6 mb-4">
