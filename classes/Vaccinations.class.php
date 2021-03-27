@@ -4,10 +4,12 @@
 class Vaccinations{
 
     public function getVaccinations(){
-      $string = file_get_contents('https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.json%27');
+      $string = file_get_contents('https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/vaccinations/vaccinations.json');
       $json = json_decode($string, TRUE);
       $countries = array("");
       $vaccinated = array("");
+      $rates = array("");
+
       $countriesVaccinatedArray = array_map(null, $countries, $vaccinated);
       foreach($json as $temporaryJson)
       {
@@ -26,6 +28,7 @@ class Vaccinations{
                 {
                     $latestUpdateVaccinations = $dataPiece['total_vaccinations'];
                     $countryName = $temporaryJson['country'];
+                    $total_vaccinations_per_hundred = $dataPiece['total_vaccinations_per_hundred'];
                 }
 
               }
@@ -37,13 +40,14 @@ class Vaccinations{
           {
             array_push($countries, $countryName);
             array_push($vaccinated, $latestUpdateVaccinations);
+            array_push($rates, $total_vaccinations_per_hundred);
 
           }
             //print_r($countryName . " \n" . $latestUpdateVaccinations);
             //$countriesVaccinatedArray($countryName => $latestUpdateVaccinations);
         }
       }
-      $countriesVaccinatedArray = array_map(null, $countries, $vaccinated);
+      $countriesVaccinatedArray = array_map(null, $countries, $vaccinated, $rates);
       //foreach($countriesVaccinatedArray as $elem)
       //print_r($elem[0] . " - " . $elem[1] . "\n");
       return $countriesVaccinatedArray;

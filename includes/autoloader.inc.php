@@ -13,10 +13,9 @@ spl_autoload_register('myAutoloader');
             $path="classes/";
         }
 
-        
         $extension=".class.php";
         $fullPath=$path.$className.$extension;
-
+        //echo $fullPath;
         if(!file_exists($fullPath)){
             return false;
         }
