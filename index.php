@@ -59,20 +59,41 @@
     <header class="jumbotron my-4">
       <h1 class="display-3">Hello there!</h1>
       <p class="lead">Feel free to browse the available destinations below or search for something specific.</p>
-      <form role="form" action="request.php" method="post">
+      <form role="form" action="filter_action.php" method="post">
           <div class="form-group">
             
             <label for="exampleInputEmail1">
-              Full name
+              Minimum vaccination rate of destination country: (in %)
             </label>
-            <input type="email" class="form-control" id="exampleInputEmail1">
+            <?php
+            if(!empty($_GET['rate'])){
+              print '<input type="number" class="form-control" name="rate" value="'.$_GET['rate'].'">';
+            }
+            else{
+              print '<input type="number" class="form-control" name="rate">';
+            }
+            ?>
+          </div>
+
+          <div class="form-group">
+            
+            <label for="exampleInputEmail1">
+              Minimum temperature of destination: (in °C)
+            </label>
+            <?php
+            if(!empty($_GET['temperature'])){
+              print '<input type="number" class="form-control" name="temperature" value="'.$_GET['temperature'].'">';
+            }
+            else{
+              print '<input type="number" class="form-control" name="temperature">';
+            }
+            ?>
           </div>
             
-          <button type="submit" class="btn btn-primary" style="margin-bottom: 20px">
+          <button type="submit" class="btn btn-primary" style="margin-bottom: 20px" name="filtButton">
             Submit
           </button>
         </form>
-      <a href="#" class="btn btn-primary btn-lg">Button that does nothing yet</a>
     </header>
 
     <!-- Page Features -->
@@ -98,22 +119,27 @@
         $rate = $percentageObject->getRate($vaccines, $destinations[$i]['country']);
         $temp=$tempObj->getTemperature($destinations[$i]['city']);
 
-      print '
-      <div class="col-lg-3 col-md-6 mb-4">
-        <div class="card h-100">
-        <img class="card-img-top" src="https://www.mymallorcatrips.com/wp-content/uploads/2019/08/sephar8-500x325.jpg" alt="">
-        <div class="card-body">
-          <h4 class="card-title">'.$destinations[$i]['city'].', '.$destinations[$i]['country'].'</h4>
-          <p class="card-text">'. 'Vaccination rate is ' .$rate.'% </p>
-          <p class="card-text">'. 'Temperature: ' .$temp.'°C </p>
-        </div>
-        <div class="card-footer">
-          <a href="filter.php?post_id='.$destinations[$i]['dest_id'].'" class="btn btn-primary">Find Out More!</a>
-        </div>
-        </div>
-      </div>
 
-      ';
+        if((empty($_GET['rate']))||($_GET['rate']<$rate)){
+          if((empty($_GET['temperature']))||($_GET['temperature']<$temp)){
+            print '
+            <div class="col-lg-3 col-md-6 mb-4">
+              <div class="card h-100">
+              <img class="card-img-top" src="https://www.mymallorcatrips.com/wp-content/uploads/2019/08/sephar8-500x325.jpg" alt="">
+              <div class="card-body">
+                <h4 class="card-title">'.$destinations[$i]['city'].', '.$destinations[$i]['country'].'</h4>
+                <p class="card-text">'. 'Vaccination rate is ' .$rate.'% </p>
+                <p class="card-text">'. 'Temperature: ' .$temp.'°C </p>
+              </div>
+              <div class="card-footer">
+                <a href="filter.php?post_id='.$destinations[$i]['dest_id'].'" class="btn btn-primary">Find Out More!</a>
+              </div>
+              </div>
+            </div>
+
+            ';
+          }
+        }
     }
     ?>
 
