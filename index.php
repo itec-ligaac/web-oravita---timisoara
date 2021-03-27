@@ -1,5 +1,6 @@
 <?php
 	include 'includes/autoloader.inc.php';
+  include_once('simple_html_dom.php');
 ?>
 
 <!DOCTYPE html>
@@ -119,13 +120,17 @@
         $rate = $percentageObject->getRate($vaccines, $destinations[$i]['country']);
         $temp=$tempObj->getTemperature($destinations[$i]['city']);
 
+        //$search_keyword=str_replace(' ','+',$search_keyword);
+        $newhtml =file_get_html("https://www.google.com/search?q=".$destinations[$i]['city']."&tbm=isch");
+        $result_image_source = $newhtml->find('img',1)->src;
+        
 
         if((empty($_GET['rate']))||($_GET['rate']<$rate)){
           if((empty($_GET['temperature']))||($_GET['temperature']<$temp)){
             print '
             <div class="col-lg-3 col-md-6 mb-4">
               <div class="card h-100">
-              <img class="card-img-top" src="https://www.mymallorcatrips.com/wp-content/uploads/2019/08/sephar8-500x325.jpg" alt="">
+              <img class="card-img-top" src="'.$result_image_source.'" alt="">
               <div class="card-body">
                 <h4 class="card-title">'.$destinations[$i]['city'].', '.$destinations[$i]['country'].'</h4>
                 <p class="card-text">'. 'Vaccination rate is ' .$rate.'% </p>
