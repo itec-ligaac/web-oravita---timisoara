@@ -1,5 +1,5 @@
 <?php
-	include 'includes/autoloader.inc.php';
+	include 'includes\autoloader.inc.php';
 ?>
 
 <!DOCTYPE html>
@@ -66,38 +66,16 @@
 
 	<div class="row text-center">
 
+        <form action="request.php" method="post" class="form-control">
+            <input type="text" name="name"  placeholder="Complete name"></input>
+        </form>
+
 	<?php
 
-	$view=new View();
-	$destinations=$view->getDestinations();
-
-	$vac=new Vaccinations();
-	$vaccines=$vac->getVaccinations();
-
-	$percentageObject = new Percentage();
-
-	for($i=0;$i<count($destinations);$i=$i+1){
-			$rate = $percentageObject->getRate($vaccines, $destinations[$i]['country']);
-		print '
-		<div class="col-lg-3 col-md-6 mb-4">
-		  <div class="card h-100">
-			<img class="card-img-top" src="https://www.mymallorcatrips.com/wp-content/uploads/2019/08/sephar8-500x325.jpg" alt="">
-			<div class="card-body">
-			  <h4 class="card-title">'.$destinations[$i]['city'].', '.$destinations[$i]['country'].'</h4>
-			  <p class="card-text">'. 'Vaccination rate is ' .$rate.'% </p>
-			</div>
-			<div class="card-footer">
-        <a href="filter.php?post_id='.$destinations[$i]['dest_id'].'" class="btn btn-primary">Find Out More!</a>
-			</div>
-		  </div>
-		</div>
-
-	  ';
-	}
 	?>
 	</div>
     <!-- /.row -->
-
+	
 
   </div>
   <!-- /.container -->
