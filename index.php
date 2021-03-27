@@ -1,26 +1,9 @@
 <?php
 	include 'includes/autoloader.inc.php';
+	include 'headerFile.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>COVacation</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/heroic-features.css" rel="stylesheet">
-
-</head>
 
 <body>
 
@@ -61,13 +44,13 @@
       <p class="lead">Feel free to browse the available destinations below or search for something specific.</p>
       <form role="form" action="request.php" method="post">
           <div class="form-group">
-            
+
             <label for="exampleInputEmail1">
               Full name
             </label>
             <input type="email" class="form-control" id="exampleInputEmail1">
           </div>
-            
+
           <button type="submit" class="btn btn-primary" style="margin-bottom: 20px">
             Submit
           </button>
@@ -77,7 +60,7 @@
 
     <!-- Page Features -->
 
-    
+
 
     <div class="row text-center">
 
@@ -90,7 +73,7 @@
     $vaccines=$vac->getVaccinations();
 
     $tempObj=new Temperature();
-  
+
 
     $percentageObject = new Percentage();
 
@@ -108,7 +91,7 @@
           <p class="card-text">'. 'Temperature: ' .$temp.'°C </p>
         </div>
         <div class="card-footer">
-          <a href="filter.php?post_id='.$destinations[$i]['dest_id'].'" class="btn btn-primary">Find Out More!</a>
+          <a href="filter.php?selectedCity='.$destinations[$i]['city'].'" class="btn btn-primary">Find Out More!</a>
         </div>
         </div>
       </div>

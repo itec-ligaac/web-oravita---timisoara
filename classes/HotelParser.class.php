@@ -10,7 +10,8 @@ class HotelParser{
 
       $names = array("");
       for($i = 0; $i < sizeof($json['suggestions']); $i++)
-        array_push($names, $json['suggestions'][$i]['entities'][0]['name']);
+        if(isset($json['suggestions'][$i]['entities'][0]['name']))
+          array_push($names, $json['suggestions'][$i]['entities'][0]['name']);
 
 
       return $names;

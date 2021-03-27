@@ -1,26 +1,8 @@
 <?php
 	include 'includes/autoloader.inc.php';
+	include 'headerFile.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="">
-  <meta name="author" content="">
-
-  <title>COVacation</title>
-
-  <!-- Bootstrap core CSS -->
-  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="css/heroic-features.css" rel="stylesheet">
-
-</head>
 
 <body>
 
@@ -64,35 +46,37 @@
     <!-- Page Features -->
 
 	<div class="row text-center">
-
-        <form role="form" action="request.php" method="post">
+<?php
+ print '
+        <form role="form" action="request.php?selectedCity='.$_GET["selectedCity"].'" method="post">
           <div class="form-group">
-            
+
             <label for="exampleInputEmail1">
               Full name
             </label>
             <input type="email" class="form-control" id="exampleInputEmail1">
           </div>
-            
+
             <label for="exampleInputDate1">
               Check-In Date
             </label>
           <div class="form-group">
-            <input type="date" name="dateFrom" class="form-control" value="<?php echo date('Y-m-d');?>">
+            <input type="date" name="dateFrom" class="form-control" value="'.date('Y-m-d').'">
           </div>
 
             <label for="exampleInputDate1">
               Check-Out Date
             </label>
           <div class="form-group">
-            <input type="date" name="dateFrom" class="form-control" value="<?php echo date('Y-m-d');?>">
+            <input type="date" name="dateTo" class="form-control" value="'.date('Y-m-d').'">
           </div>
-         
-          <button type="submit" class="btn btn-primary" style="margin-bottom: 20px">
+
+          <button type="submit" name = "submitButton" class="btn btn-primary" style="margin-bottom: 20px">
             Submit
           </button>
         </form>
-      
+				'
+?>
 	</div>
     <!-- /.row -->
 
